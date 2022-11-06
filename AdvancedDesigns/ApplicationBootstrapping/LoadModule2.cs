@@ -19,7 +19,7 @@ namespace ApplicationBootstrapping
         {
             if (!previousResult)
             {
-                state.Errors.Add("Module 2 coun't be loaded if Module1 result is false.");
+                state.Errors.Add("Module 2 couldn't be loaded if Module1 result is false.");
                 throw new Exception();
             }
             return Task.FromResult(state.Module2Reult = "result of module2");

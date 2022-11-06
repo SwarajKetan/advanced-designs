@@ -24,6 +24,8 @@ namespace ApplicationBootstrapping.Framework
                 for (int i = 0; i < Loaders.Count; i++)
                 {
                     var loader = Loaders[i];
+
+                    // you can compute the load time of each module and optimize.
                     result = await loader.LoadAsync(result);
                 }
 
@@ -33,6 +35,10 @@ namespace ApplicationBootstrapping.Framework
             {
                 Trace.TraceError($"{ex}");
                 return false;
+            }
+            finally
+            {
+                Loaders.Clear();
             }
         }
     }

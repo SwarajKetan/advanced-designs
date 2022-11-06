@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationBootstrapping
 {
+    /// <summary>
+    /// You can keep reference of any object that need to be stored throughout entire application lifecycle.
+    /// </summary>
     internal class ApplicationState
     {
         public bool Module1Result { get; set; }

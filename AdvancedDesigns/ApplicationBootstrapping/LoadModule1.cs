@@ -14,6 +14,7 @@ namespace ApplicationBootstrapping
         {
             this.state = state;
         }
+        /// <inheritdoc/>
         public Task<bool> LoadAsync(string previousResult)
         {
             return Task.FromResult(state.Module1Result = false);
