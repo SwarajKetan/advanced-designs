@@ -1,4 +1,6 @@
-﻿namespace ApplicationBootstrapping.Framework
+﻿using System.Diagnostics;
+
+namespace ApplicationBootstrapping.Framework
 {
     internal class AppLoader
     {
@@ -13,14 +15,24 @@
             return this;
         }
 
-        public async Task RunAsync()
+        public async Task<bool> RunAsync()
         {
-            dynamic? result = null;
-
-            for (int i = 0; i < Loaders.Count; i++)
+            try
             {
-                var loader = Loaders[i];
-                result = await loader.LoadAsync(result);
+                dynamic? result = null;
+
+                for (int i = 0; i < Loaders.Count; i++)
+                {
+                    var loader = Loaders[i];
+                    result = await loader.LoadAsync(result);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError($"{ex}");
+                return false;
             }
         }
     }

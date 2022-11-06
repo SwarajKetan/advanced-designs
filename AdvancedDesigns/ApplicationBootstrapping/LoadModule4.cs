@@ -9,9 +9,15 @@ namespace ApplicationBootstrapping
 {
     internal class LoadModule4 : IModule<string, Complex>
     {
+        private readonly ApplicationState state;
+        public LoadModule4(ApplicationState state)
+        {
+            this.state = state;
+        }
+
         public Task<string> LoadAsync(Complex previousResult)
         {
-            return Task.FromResult($"age:{previousResult.Age}, name:{previousResult.Name}");
+            return Task.FromResult(state.Module4Result = $"age:{previousResult.Age}, name:{previousResult.Name}");
         }
     }
 }

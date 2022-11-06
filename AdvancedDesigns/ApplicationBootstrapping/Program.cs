@@ -1,31 +1,19 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ApplicationBootstrapping;
 
-Console.WriteLine("Hello, World!");
-
 var appLoader = new ApplicationBootstrapping.Framework.AppLoader();
+var appState = new ApplicationState();
 
 appLoader
-    .Register(new LoadModule1())
-    .Register(new LoadModule2())
-    .Register(new LoadModule3())
-    .Register(new LoadModule4());
+    .Register(new LoadModule1(appState))
+    .Register(new LoadModule2(appState))
+    .Register(new LoadModule3(appState))
+    .Register(new LoadModule4(appState));
 
-/*
- * 
- * 
- * 
- * appLoader
-    .Register(new LoadModule1(state))
-    .Register(new LoadModule2(state))
-    .Register(new LoadModule3(state))
-    .Register(new LoadModule4(state));
- * 
- * 
- * 
- * 
- */
+if (await appLoader.RunAsync())
+{
+    Console.ReadLine();
+}
 
-await appLoader.RunAsync();
-
+Console.WriteLine($"{string.Join("\n", appState.Errors)}");
 Console.ReadLine();

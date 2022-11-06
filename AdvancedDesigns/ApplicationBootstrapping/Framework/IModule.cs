@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace ApplicationBootstrapping.Framework
 {
+    /// <summary>
+    /// Internal to fw.
+    /// </summary>
     internal interface ILoaderCore { }
-    internal interface IModule<T, TPrevious> : ILoaderCore
+
+    /// <summary>
+    /// Every module must implement <see cref="IModule{TResult, TResultPrevious}"/>.
+    /// </summary>
+    /// <typeparam name="TResult"></typeparam>
+    /// <typeparam name="TResultPrevious"></typeparam>
+    internal interface IModule<TResult, TResultPrevious> : ILoaderCore
     {
-        Task<T> LoadAsync(TPrevious previousResult);
+        Task<TResult> LoadAsync(TResultPrevious previousResult);
     }
 }
