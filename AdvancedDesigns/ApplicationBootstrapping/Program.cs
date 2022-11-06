@@ -5,10 +5,10 @@ var appLoader = new ApplicationBootstrapping.Framework.AppLoader();
 var appState = new ApplicationState();
 
 appLoader
-    .Register(new LoadModule1(appState))
-    .Register(new LoadModule2(appState))
-    .Register(new LoadModule3(appState))
-    .Register(new LoadModule4(appState));
+    .Register(new Module1(appState))
+    .Register(new Module2(appState))
+    .Register(new Module3(appState))
+    .Register(new Module4(appState));
 
 if (await appLoader.RunAsync())
 {

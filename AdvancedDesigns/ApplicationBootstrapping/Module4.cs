@@ -7,17 +7,17 @@ using ApplicationBootstrapping.Framework;
 
 namespace ApplicationBootstrapping
 {
-    internal class LoadModule1 : IModule<bool, string>
+    internal class Module4 : IModule<string, Complex>
     {
         private readonly ApplicationState state;
-        public LoadModule1(ApplicationState state)
+        public Module4(ApplicationState state)
         {
             this.state = state;
         }
-        /// <inheritdoc/>
-        public Task<bool> LoadAsync(string previousResult)
+
+        public Task<string> LoadAsync(Complex previousResult)
         {
-            return Task.FromResult(state.Module1Result = false);
+            return Task.FromResult(state.Module4Result = $"age:{previousResult.Age}, name:{previousResult.Name}");
         }
     }
 }

@@ -7,10 +7,10 @@ using ApplicationBootstrapping.Framework;
 
 namespace ApplicationBootstrapping
 {
-    internal class LoadModule2 : IModule<string, bool>
+    internal class Module2 : IModule<string, bool>
     {
         private readonly ApplicationState state;
-        public LoadModule2(ApplicationState state)
+        public Module2(ApplicationState state)
         {
             this.state = state;
         }
